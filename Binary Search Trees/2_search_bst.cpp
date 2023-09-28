@@ -75,6 +75,17 @@ TreeNode* minVal(TreeNode* root) {
 
 
 
+TreeNode* maxVal(TreeNode* root) {
+    TreeNode* temp = root;
+
+    while(temp->right != NULL) {
+        temp = temp->right;
+    }
+    return temp;
+}
+
+
+
 // Delete a Node in BST (Hard Question)
 TreeNode* deleteFromBST(TreeNode* root, int k) {
     if(root == nullptr) {
@@ -118,3 +129,4 @@ TreeNode* deleteFromBST(TreeNode* root, int k) {
 
     return temp;
 }
+
