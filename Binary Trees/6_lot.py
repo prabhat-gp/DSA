@@ -86,7 +86,7 @@ def isCompleteTree(root):
         
 
 
-# 1161. Maximum Level Sum of Binary Tree
+# 1161. Maximum Level Sum of Binary Tree  (Maximum Sum or Maximum Level of Binary Tree (both))
 def maxLevelSum(root):
     if root is None:
         return 0
@@ -100,7 +100,6 @@ def maxLevelSum(root):
     while not qu.empty():
         currSum = 0
         currLevel = qu.qsize()
-
 
         for i in range(currLevel):
             curr = qu.get()
@@ -119,6 +118,7 @@ def maxLevelSum(root):
         level += 1
     
     return maxLevel
+
 
 
 # 2583. kth Largest Sum in Binary Tree
