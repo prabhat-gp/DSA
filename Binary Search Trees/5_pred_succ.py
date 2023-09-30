@@ -43,3 +43,39 @@ pair<int, int> predecessorSuccessor(TreeNode* root, key) {
     pair<int, int> ans = make_pair(pred, succ);
     return ans;
 }
+
+
+# Approach 2
+TreeNode* pred(TreeNode* root, int key) {
+    TreeNode* ans = NULL;
+    TreeNode* temp = root;
+    while(temp != NULL) {
+        if(temp->val >= key) {
+            temp = temp->left;
+        } else {
+            ans = temp;
+            temp = temp->right;
+        }
+    }
+    return ans;
+}
+
+
+TreeNode* succ(TreeNode* root, int key) {
+    TreeNode* ans = NULL;
+    TreeNode* temp = root;
+    while(temp != NULL) {
+        if(temp->val > key) {
+            ans = temp;
+            temp = temp->left;
+        } else {
+            temp = temp->right;
+        }
+    }
+    return ans;
+}
+
+void findPredSucc(TreeNode* root, TreeNode*&pred, TreeNode*&succ, int key) {
+    pred = pred(root, key);
+    succ = succ(root, key);
+}
