@@ -78,3 +78,38 @@ def maxOperations(arr, k):
         else:
             map[arr[i]] = map.get(arr[i], 0) + 1
     return cnt
+
+
+
+# 653. Two Sum IV - Input is a BST
+def inOrder(root, res):
+    if root is None:
+        return
+
+    inOrder(root.left, res)
+    res.append(root.data)
+    inOrder(root.right, res)
+
+def findTarget(root, k):
+    res = []
+    inOrder(root, res)
+    low = 0
+    high = len(res) - 1
+
+    while low < high:
+        target = res[low] + res[high]
+        if target == k:
+            return True
+        elif target < k:
+            low += 1
+        else:
+            high -=1
+    
+    return False
+
+
+# 170. Two Sum III - Data Structure Design
+# 1214. Two Sum BSTs
+# BST Downward Traversal
+# Floor and Ceil in BST 
+

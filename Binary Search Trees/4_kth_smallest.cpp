@@ -60,6 +60,29 @@ int* kthLargest(TreeNode* root, int k) {
 }
 
 
+// Approach 2
+void inorderTraversal(Node* root, vector<int> &ans) {
+    if(root == nullptr) {
+        return;
+    }
+
+    inorderTraversal(root->left, ans);
+    ans.push_back(root->val);
+    inorderTraversal(root->right, ans);
+}
+
+int KthSmallestElement(TreeNode *root, int k) {
+    vector<int> ans;
+    inorderTraversal(root,ans);
+
+    if(ans.size() < k) {
+        return -1;
+    }
+    
+    return ans[k - 1];
+}
+
+
 // Optmised Approach (Morris Traversal) 
 
 // 671. Second Minimum Node in a Binary Tree
