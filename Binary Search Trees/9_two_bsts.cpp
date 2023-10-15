@@ -1,3 +1,16 @@
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int val) {
+        this->val = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+}
+
+
 // 1305. All Elements in Two Binary Search Tree 
 void inorder(TreeNode* root, vector<int>& ans) {
     if(root == nullptr) return;
@@ -62,6 +75,3 @@ vector<int> commonNodes(TreeNode* root1, TreeNode* root2) {
     }
 }
 
-
-
-// 1382. Balance a Binary Search Tree 
