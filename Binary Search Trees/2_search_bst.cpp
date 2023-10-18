@@ -1,5 +1,4 @@
 // 700. Search in a Binary Search Tree
-
 struct TreeNode {
     int val;
     TreeNode* left;
