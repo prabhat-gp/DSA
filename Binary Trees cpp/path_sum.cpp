@@ -34,6 +34,25 @@ bool isSumTree(Node* root) {
 }
 
 
+
+// Transform to Sum Tree
+int solve(TreeNode* root) {
+    if(root == nullptr) return 0;
+
+    int left = solve(root->left);
+    int right = solve(root->right);
+    int data = root->val;
+    root->val = left + right;
+    return data + left + right;
+}
+
+void toSumTree(TreeNode* root) {
+    solve(root);
+    return;
+}
+
+
+
 // 112. Path Sum 
 // DFS Approach 
 bool hasPathSum(TreeNode* root, int targetSum) {
@@ -99,6 +118,27 @@ int pathSum(TreeNode* root, int k) {
     unordered_map<long long, int> map;
     map[0] = 1;
     return solve(root, k, 0LL, map);
+}
+
+
+// 687. Longest Univalue Path 
+int path(TreeNode* root, int& ans, int prev = -1) {
+    if(root == nullptr) return 0;
+
+    int left = path(root->left, ans, root->val);
+    int right = path(root->right, ans, root->val);
+
+    ans = max(ans, left + right);
+
+    if(root->val != prev) return 0;
+
+    return max(left, right) + 1;
+}
+
+int longestUnivaluePath(TreeNode* root) {
+    int ans = 0;
+    path(root, ans);
+    return ans;
 }
 
 
