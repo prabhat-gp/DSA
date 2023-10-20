@@ -1,6 +1,5 @@
-# Inorder Traversal
-
-def inOrder(root):
+# Inorder Traversal 
+def inOrder(root): 
     if root is None:
         return
     
