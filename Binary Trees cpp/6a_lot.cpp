@@ -131,5 +131,36 @@ int sumNumbers(TreeNode* root) {
 
 
 // 637. Average of Levels in Binary Tree
+vector<double> averageOfLevels(TreeNode* root) {
+    if (root == nullptr) return {};
+
+    vector<double> temp;
+    queue<TreeNode*> qu;
+    qu.push(root);
+    
+    while (!qu.empty()) {
+        int levelSize = qu.size();
+        double levelSum = 0.0;
+        
+        for (int i = 0; i < levelSize; i++) {
+            TreeNode* curr = qu.front();
+            qu.pop();
+            levelSum += curr->val;
+            
+            if (curr->left) 
+                qu.push(curr->left);
+            
+            if (curr->right) 
+                qu.push(curr->right);
+            
+        }
+        double levelAverage = levelSum / levelSize;
+        temp.push_back(levelAverage);
+    }
+    return temp;
+}
 
 
+
+// 257. Binary Tree Paths 
+// 1022. Sum to Root to Leaf Binary Numbers 
