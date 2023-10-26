@@ -12,11 +12,9 @@ struct TreeNode {
 
 // 102. Binary Tree Level Order Traversal
 vector<int> levelOrderTraversal(TreeNode* root) {
-    vector<int> res;
-    if (root == nullptr) {
-        return res;
-    }
+    if (root == nullptr) return {}
 
+    vector<int> res;
     queue<TreeNode*> q;
     q.push(root);
 
@@ -41,9 +39,7 @@ vector<int> levelOrderTraversal(TreeNode* root) {
 
 // 107. Binary Tree Level Order Traversal (Reverse LOT)
 vector<int> reverseLevelOrder(TreeNode* root) {
-    if (root == nullptr) {
-        return {};
-    }
+    if (root == nullptr) return {};
 
     queue<TreeNode*> qu;
     qu.push(root);
@@ -66,10 +62,8 @@ vector<int> reverseLevelOrder(TreeNode* root) {
                 qu.push(curr->right);
             }
         }
-
         ans.insert(ans.begin(), v.begin(), v.end());
     }
-
     return ans;
 }
 
