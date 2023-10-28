@@ -86,3 +86,57 @@ int KthSmallestElement(TreeNode *root, int k) {
 // Optmised Approach (Morris Traversal) 
 
 // 671. Second Minimum Node in a Binary Tree
+// Approach 1 
+void inorder(TreeNode* root, set<int> &ans) {
+    if(root == nullptr) return;
+
+    inorder(root->left, ans);
+    ans.insert(root->val);
+    inorder(root->right, ans);
+}
+int findSecondMinimumValue(TreeNode* root) {
+    set<int> ans;
+    inorder(root, ans);
+
+    if (ans.size() < 2)
+        return -1;
+
+    int count = 0;
+    int secondMinimum = -1;
+    for (int value : ans) {
+        if (count == 1) {
+            secondMinimum = value;
+            break;
+        }
+        count++;
+    }
+    return secondMinimum;
+}
+
+
+// Approach 2
+int findSecondMinimumValue(TreeNode* root) {
+    if (root == nullptr)
+        return -1;
+        
+    int minVal = root->val;
+    long secondMin = LLONG_MAX;  
+
+    queue<TreeNode*> qu;
+    qu.push(root);
+
+    while (!qu.empty()) {
+        TreeNode* curr = qu.front();
+        qu.pop();
+
+        if (curr->val != minVal) {
+            secondMin = min(secondMin, (long)curr->val);
+        }
+
+        if (curr->left)
+            qu.push(curr->left);
+        if (curr->right)
+            qu.push(curr->right);
+    }
+    return (secondMin == LLONG_MAX) ? -1 : (int)secondMin;
+}
