@@ -123,3 +123,28 @@ int kthLargestLevelSum(TreeNode* root, int k) {
 
     return -1;
 }
+
+// Connect Nodes at Same Level 
+void connect(TreeNode* root) {
+    queue<TreeNode*> qu;
+    qu.push(root);
+
+    while(!qu.empty()) {
+        int size = qu.size();
+
+        for(int i = 0; i < size; i++) {
+            TreeNode* curr = qu.front();
+            qu.pop();
+
+            if(!qu.empty() && i < size - 1)
+                curr->nextRight = qu.front();
+            else    
+                curr->nextRight = nullptr
+            
+            if(curr->left)
+                qu.push(curr->left)
+            if(curr->right)
+                qu.push(curr->right)
+        }
+    }
+}
