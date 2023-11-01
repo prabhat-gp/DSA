@@ -35,9 +35,65 @@ bool isValidBST(TreeNode* root) {
 }
 
 
+
 // LCA in BST 
 // Find common nodes in two BSTs 
 // 501. Find Mode in Binary Search Tree 
+void inorderTraversal(TreeNode* root, vector<int>& res) {
+    if (root == NULL) return;
+
+    inorderTraversal(root->left, res);
+    res.push_back(root->val);
+    inorderTraversal(root->right, res);
+}
+
+vector<int> findMode(TreeNode* root) {
+    vector<int> res;
+    inorderTraversal(root, res);
+    int mx = INT_MIN;
+     unordered_map<int, int> map;
+
+    for (int i = 0; i < res.size(); i++) {
+        map[res[i]]++;
+        mx = max(map[res[i]], mx);
+    }
+    vector<int> temp;
+    for (auto it : map) {
+        if (it.second == mx)
+            temp.push_back(it.first);
+    }
+    return temp;
+}
+
+
+
+
+// Median in BST 
+void inorder(Node* root, vector<int> &ans) {
+    if(root == NULL) return;
+    
+    inorder(root->left,ans);
+    ans.push_back(root->data);
+    inorder(root->right,ans);
+}
+
+float findMedian(struct Node *root) {
+    vector<int> temp;
+    inorder(root, temp);
+    float ans;
+    int size = temp.size();
+    if(size % 2 != 0) {
+        int index = (size + 1) / 2;
+        ans = temp[index - 1];
+    } else {
+        int a = size / 2;
+        int b = (size / 2) + 1;
+        ans = (temp[a - 1] + temp[b - 1]) / 2.0;
+    }
+    return ans;
+}
+
+
 
 // 1361. Validate Binary Tree Nodes
 #include <vector>
