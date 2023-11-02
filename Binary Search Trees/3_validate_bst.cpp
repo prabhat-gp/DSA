@@ -36,8 +36,6 @@ bool isValidBST(TreeNode* root) {
 
 
 
-// LCA in BST 
-// Find common nodes in two BSTs 
 // 501. Find Mode in Binary Search Tree 
 void inorderTraversal(TreeNode* root, vector<int>& res) {
     if (root == NULL) return;
@@ -64,7 +62,6 @@ vector<int> findMode(TreeNode* root) {
     }
     return temp;
 }
-
 
 
 
@@ -137,3 +134,7 @@ bool validateBinaryTreeNodes(int n, vector<int>& leftChild, vector<int>& rightCh
 
     return visited.size() == n;
 }
+
+
+// LCA in BST 
+// Find common nodes in two BSTs 
